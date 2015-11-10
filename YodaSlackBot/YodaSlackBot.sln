@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YodaSlackBot", "YodaSlackBot\YodaSlackBot.csproj", "{FDE01B8F-9B15-4280-AED3-EDD4CE896FDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{7EEC3AAE-88C7-475A-B6F3-AEC317C3F110}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{FDE01B8F-9B15-4280-AED3-EDD4CE896FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDE01B8F-9B15-4280-AED3-EDD4CE896FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDE01B8F-9B15-4280-AED3-EDD4CE896FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEC3AAE-88C7-475A-B6F3-AEC317C3F110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEC3AAE-88C7-475A-B6F3-AEC317C3F110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEC3AAE-88C7-475A-B6F3-AEC317C3F110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEC3AAE-88C7-475A-B6F3-AEC317C3F110}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
