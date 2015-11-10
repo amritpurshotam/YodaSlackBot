@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Castle.Windsor;
-using Castle.Windsor.Installer;
+using MargieBot;
+using MargieBot.Responders;
 using YodaSlackBot.DI;
 
 namespace YodaSlackBot
@@ -16,6 +18,20 @@ namespace YodaSlackBot
         static void Main(string[] args)
         {
             container = BotRunnerBootstrapper.Init();
+            
+            var bot = new Bot();
+            var responders = container.ResolveAll<IResponder>();
+            foreach (var responder in responders)
+            {
+                bot.Responders.Add(responder);
+            }
+
+            var connect = bot.Connect(ConfigurationManager.AppSettings["SlackBotApiToken"]);
+
+            while (Console.ReadLine() != "close")
+            {
+                
+            }
         }
     }
 }
