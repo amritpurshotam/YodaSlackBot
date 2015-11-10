@@ -12,7 +12,7 @@ namespace API.ReactionApi
                 .PostUrlEncodedAsync(
                     new
                     {
-                        token = ConfigurationManager.AppSettings["SlackApiKey"],
+                        token = ConfigurationManager.AppSettings["SlackBotApiToken"],
                         name = reaction,
                         channel,
                         timestamp

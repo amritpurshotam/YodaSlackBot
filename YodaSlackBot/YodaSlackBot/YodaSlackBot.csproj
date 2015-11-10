@@ -47,6 +47,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.46\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -62,9 +65,12 @@
   <ItemGroup>
     <Compile Include="DI\BotInstaller.cs" />
     <Compile Include="DI\BotRunnerBootstrapper.cs" />
+    <Compile Include="Extensions\SlackMessageExtensions.cs" />
+    <Compile Include="Models\SlackRawDataModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responders\HelloResponder.cs" />
+    <Compile Include="Responders\ReactionExampleResponder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
