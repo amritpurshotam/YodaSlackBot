@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YodaSlackBot.Models
 {
-    public class SlackRawDataModel
+    public class SlackRawMessageModel
     {
         public string type { get; set; }
         public string channel { get; set; }
