@@ -61,6 +61,13 @@
   <ItemGroup>
     <Compile Include="DI\APIInstaller.cs" />
     <Compile Include="DI\Bootstrapper.cs" />
+    <Compile Include="GroupsApi\Group.cs" />
+    <Compile Include="GroupsApi\GroupsApi.cs" />
+    <Compile Include="GroupsApi\GroupsListResponseModel.cs" />
+    <Compile Include="GroupsApi\IGroupsApi.cs" />
+    <Compile Include="GroupsApi\Message.cs" />
+    <Compile Include="GroupsApi\Purpose.cs" />
+    <Compile Include="GroupsApi\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReactionApi\IReactionApi.cs" />
     <Compile Include="ReactionApi\ReactionApi.cs" />
