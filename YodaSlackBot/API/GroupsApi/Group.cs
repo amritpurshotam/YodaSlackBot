@@ -23,7 +23,7 @@ namespace API.GroupsApi
         {
             get
             {
-                return new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)
+                return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                     .AddSeconds(created)
                     .ToLocalTime();
             }

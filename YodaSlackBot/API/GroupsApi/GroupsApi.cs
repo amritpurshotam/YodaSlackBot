@@ -1,4 +1,5 @@
-﻿using Flurl.Http;
+﻿using System;
+using Flurl.Http;
 using ServiceStack.Text;
 
 namespace API.GroupsApi
@@ -22,6 +23,23 @@ namespace API.GroupsApi
             return response;
         }
 
+        public GroupsHistoryResponseModel GetGroupHistory(string slackApiToken, string channel, DateTime startTime, DateTime endTime)
+        {
+            var responseString = "https://slack.com/api/groups.history"
+                .PostUrlEncodedAsync(
+                    new
+                    {
+                        token = slackApiToken,
+                        channel,
+                        latest = endTime.ToUnixTime(),
+                        oldest = startTime.ToUnixTime()
+                    })
+                .ReceiveString()
+                .Result;
 
+            var serializer = new JsonSerializer<GroupsHistoryResponseModel>();
+            var response = serializer.DeserializeFromString(responseString);
+            return response;
+        }
     }
 }
