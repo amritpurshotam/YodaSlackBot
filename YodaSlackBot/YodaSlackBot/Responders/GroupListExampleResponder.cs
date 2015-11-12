@@ -35,7 +35,7 @@ namespace YodaSlackBot.Responders
             var groupsResponse = groupsApi.ListGroups(ConfigurationManager.AppSettings["SlackBotApiToken"]);
             if (!groupsResponse.ok) return new BotMessage{ Text = "Request to slack failed. Details: " + groupsResponse.error };
             
-            builder.AppendLine("I belong to these groups:");
+            builder.AppendLine("To these groups, I belong. Hmmmmm");
             foreach (var group in groupsResponse.groups)
             {
                 builder.AppendLine(group.name);
