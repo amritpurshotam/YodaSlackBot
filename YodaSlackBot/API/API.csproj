@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChannelApi\ChannelApi.cs" />
+    <Compile Include="ChannelApi\ChannelInfoResponseModel.cs" />
     <Compile Include="ChannelApi\ChannelListResponseModel.cs" />
     <Compile Include="ChannelApi\IChannelApi.cs" />
     <Compile Include="DI\APIInstaller.cs" />

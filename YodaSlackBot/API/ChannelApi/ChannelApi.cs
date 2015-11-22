@@ -47,5 +47,22 @@ namespace API.ChannelApi
             var response = serializer.DeserializeFromString(responseString);
             return response;
         }
+
+        public ChannelInfoResponseModel GetChannelInfo(string slackApiToken, string channel)
+        {
+            var responseString = "https://slack.com/api/channels.info"
+                .PostUrlEncodedAsync(
+                    new
+                    {
+                        token = slackApiToken,
+                        channel
+                    })
+                .ReceiveString()
+                .Result;
+
+            var serializer = new JsonSerializer<ChannelInfoResponseModel>();
+            var response = serializer.DeserializeFromString(responseString);
+            return response;
+        }
     }
 }

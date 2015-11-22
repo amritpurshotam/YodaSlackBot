@@ -12,5 +12,7 @@ namespace API.ChannelApi
         ChannelListResponseModel ListChannels(string slackApiToken);
 
         GroupsHistoryResponseModel GetChannelHistory(string slackApiToken, string channel, DateTime startTime, DateTime endTime, int count);
+
+        ChannelInfoResponseModel GetChannelInfo(string slackApiToken, string channel);
     }
 }

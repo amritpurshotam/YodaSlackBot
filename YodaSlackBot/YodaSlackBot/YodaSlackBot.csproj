@@ -74,6 +74,7 @@
     <Compile Include="Responders\GroupsHistoryExampleResponder.cs" />
     <Compile Include="Responders\HelloResponder.cs" />
     <Compile Include="Responders\ReactionExampleResponder.cs" />
+    <Compile Include="Responders\UserInfoExampleResponder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
