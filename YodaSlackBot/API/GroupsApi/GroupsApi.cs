@@ -23,7 +23,7 @@ namespace API.GroupsApi
             return response;
         }
 
-        public GroupsHistoryResponseModel GetGroupHistory(string slackApiToken, string channel, DateTime startTime, DateTime endTime)
+        public GroupsHistoryResponseModel GetGroupHistory(string slackApiToken, string channel, DateTime startTime, DateTime endTime, int count)
         {
             var responseString = "https://slack.com/api/groups.history"
                 .PostUrlEncodedAsync(
@@ -32,7 +32,8 @@ namespace API.GroupsApi
                         token = slackApiToken,
                         channel,
                         latest = endTime.ToUnixTime(),
-                        oldest = startTime.ToUnixTime()
+                        oldest = startTime.ToUnixTime(),
+                        count
                     })
                 .ReceiveString()
                 .Result;

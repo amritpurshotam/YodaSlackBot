@@ -6,6 +6,6 @@ namespace API.GroupsApi
     {
         GroupsListResponseModel ListGroups(string slackApiToken);
 
-        GroupsHistoryResponseModel GetGroupHistory(string slackApiToken, string channel, DateTime startTime, DateTime endTime);
+        GroupsHistoryResponseModel GetGroupHistory(string slackApiToken, string channel, DateTime startTime, DateTime endTime, int count);
     }
 }

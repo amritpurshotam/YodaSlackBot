@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="DI\APIInstaller.cs" />
     <Compile Include="DI\Bootstrapper.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="GroupsApi\EditedMessage.cs" />
     <Compile Include="GroupsApi\Group.cs" />
     <Compile Include="GroupsApi\GroupsApi.cs" />

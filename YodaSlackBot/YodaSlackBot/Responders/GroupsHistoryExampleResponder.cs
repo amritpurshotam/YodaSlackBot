@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using API.Extensions;
 using API.GroupsApi;
 using Castle.Core.Internal;
 using MargieBot.Models;
@@ -33,19 +34,28 @@ namespace YodaSlackBot.Responders
 
             foreach (var groupId in groupList)
             {
-                var history = groupsApi.GetGroupHistory(
-                    ConfigurationManager.AppSettings["SlackBotApiToken"], 
-                    groupId,
-                    DateTime.Now.AddHours(-14), 
-                    DateTime.Now
-                );
+                var history = new GroupsHistoryResponseModel();
+                var hasMore = true;
 
-                foreach (var reactionList in history.messages.Select(x => x.reactions).Where(y => !y.IsNullOrEmpty()))
+                while (hasMore)
                 {
-                    foreach (var reaction in reactionList)
+                    history = groupsApi.GetGroupHistory(
+                        ConfigurationManager.AppSettings["SlackBotApiToken"],
+                        groupId,
+                        DateTime.Now.AddHours(-1),
+                        history.messages.Any() ? history.messages.Last().ts.ToLocalDateTime() : DateTime.Now,
+                        100
+                    );
+
+                    foreach (var reactionList in history.messages.Select(x => x.reactions).Where(y => !y.IsNullOrEmpty()))
                     {
-                        builder.AppendLine(reaction.name);
+                        foreach (var reaction in reactionList)
+                        {
+                            builder.AppendLine(reaction.name);
+                        }
                     }
+
+                    hasMore = history.has_more;
                 }
             }
 
