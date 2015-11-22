@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using API.Extensions;
 
 namespace API.GroupsApi
 {
@@ -15,12 +16,7 @@ namespace API.GroupsApi
 
         public DateTime LastSetDateTime
         {
-            get
-            {
-                return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                    .AddSeconds(last_set)
-                    .ToLocalTime();
-            }
+            get { return last_set.ToLocalDateTime(); }
         }
     }
 }

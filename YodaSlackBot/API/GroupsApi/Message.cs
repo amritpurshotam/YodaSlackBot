@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using API.Extensions;
 
 namespace API.GroupsApi
 {
@@ -19,5 +20,12 @@ namespace API.GroupsApi
         public string [] pinned_to { get; set; }
         public EditedMessage edited { get; set; }
         public Reaction [] reactions { get; set; }
+
+        public DateTime TimeStamp
+        {
+            get { return ts.ToLocalDateTime(); }
+        }
     }
+
+
 }

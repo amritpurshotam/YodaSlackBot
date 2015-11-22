@@ -1,4 +1,5 @@
 ﻿using System;
+using API.Extensions;
 
 namespace API.GroupsApi
 {
@@ -21,12 +22,7 @@ namespace API.GroupsApi
 
         public DateTime CreatedDateTime
         {
-            get
-            {
-                return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                    .AddSeconds(created)
-                    .ToLocalTime();
-            }
+            get { return created.ToLocalDateTime(); }
         }
     }
 }
