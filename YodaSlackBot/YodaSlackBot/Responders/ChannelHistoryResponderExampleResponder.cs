@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using API.ChannelApi;
 using API.Extensions;
 using API.GroupsApi;
 using Castle.Core.Internal;
@@ -10,56 +12,53 @@ using MargieBot.Responders;
 
 namespace YodaSlackBot.Responders
 {
-    public class GroupsHistoryExampleResponder : IResponder
+    public class ChannelHistoryResponderExampleResponder : IResponder
     {
-        private readonly IGroupsApi groupsApi;
+        private readonly IChannelApi channelApi;
 
-        public GroupsHistoryExampleResponder(IGroupsApi groupsApi)
+        public ChannelHistoryResponderExampleResponder(IChannelApi channelApi)
         {
-            this.groupsApi = groupsApi;
+            this.channelApi = channelApi;
         }
 
         public bool CanRespond(ResponseContext context)
         {
             return !context.BotHasResponded
                    && context.Message.MentionsBot
-                   && context.Message.Text.Contains("all reactions");
+                   && context.Message.Text.Contains("channel history");
         }
 
         public BotMessage GetResponse(ResponseContext context)
         {
             var builder = new StringBuilder();
 
-            var groupList = groupsApi.ListGroups(ConfigurationManager.AppSettings["SlackBotApiToken"]).groups.Select(x => x.id);
+            var channelList = channelApi.ListChannels(ConfigurationManager.AppSettings["SlackBotApiToken"]).channels;
 
-            foreach (var groupId in groupList)
+            foreach (var channel in channelList)
             {
+                var count = 0;
                 var history = new GroupsHistoryResponseModel();
                 var hasMore = true;
 
                 while (hasMore)
                 {
-                    history = groupsApi.GetGroupHistory(
+                    history = channelApi.GetChannelHistory(
                         ConfigurationManager.AppSettings["SlackBotApiToken"],
-                        groupId,
+                        channel.id,
                         DateTime.Now.AddYears(-1),
                         history.messages.Any() ? history.messages.Last().ts.ToLocalDateTime() : DateTime.Now,
                         100
                     );
 
-                    foreach (var reactionList in history.messages.Select(x => x.reactions).Where(y => !y.IsNullOrEmpty()))
-                    {
-                        foreach (var reaction in reactionList)
-                        {
-                            builder.AppendLine(reaction.name);
-                        }
-                    }
+                    count = count + history.messages.Count();
 
                     hasMore = history.has_more;
                 }
+
+                builder.Append("Messages in ").Append(channel.name).Append(": ").Append(count).Append("\n");
             }
 
-            return new BotMessage {Text = builder.ToString()};
+            return new BotMessage { Text = builder.ToString() };
         }
     }
 }
