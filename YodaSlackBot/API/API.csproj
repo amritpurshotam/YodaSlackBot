@@ -74,13 +74,18 @@
     <Compile Include="GroupsApi\GroupsListResponseModel.cs" />
     <Compile Include="GroupsApi\IGroupsApi.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Purpose.cs" />
     <Compile Include="Models\Reaction.cs" />
     <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReactionApi\IReactionApi.cs" />
     <Compile Include="ReactionApi\ReactionApi.cs" />
     <Compile Include="ReactionApi\ReactionResponseModel.cs" />
+    <Compile Include="UserApi\IUserApi.cs" />
+    <Compile Include="UserApi\UserApi.cs" />
+    <Compile Include="UserApi\UserInfoResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
