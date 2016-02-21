@@ -63,6 +63,9 @@
     <Compile Include="ChannelApi\ChannelInfoResponseModel.cs" />
     <Compile Include="ChannelApi\ChannelListResponseModel.cs" />
     <Compile Include="ChannelApi\IChannelApi.cs" />
+    <Compile Include="ChatApi\ChatApi.cs" />
+    <Compile Include="ChatApi\ChatUpdateResponseModel.cs" />
+    <Compile Include="ChatApi\IChatApi.cs" />
     <Compile Include="DI\APIInstaller.cs" />
     <Compile Include="DI\Bootstrapper.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
