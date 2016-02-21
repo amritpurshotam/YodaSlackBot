@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace API.UserApi
+﻿namespace API.UserApi
 {
     public interface IUserApi
     {
+        UserInfoResponseModel GetUserInfo(string slackApiToken, string userSlackId);
     }
 }
