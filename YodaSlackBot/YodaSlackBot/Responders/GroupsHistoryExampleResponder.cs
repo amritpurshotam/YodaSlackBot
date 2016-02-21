@@ -37,6 +37,13 @@ namespace YodaSlackBot.Responders
                 var history = new GroupsHistoryResponseModel();
                 var hasMore = true;
 
+                var groupInfo = groupsApi.GetGroupInfo(ConfigurationManager.AppSettings["SlackBotApiToken"], groupId);
+
+                if (!groupInfo.ok) continue;
+                
+                var groupName = groupInfo.group.name;
+                builder.AppendLine("*" + groupName + "*");
+
                 while (hasMore)
                 {
                     history = groupsApi.GetGroupHistory(

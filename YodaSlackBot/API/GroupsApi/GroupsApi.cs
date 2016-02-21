@@ -42,5 +42,22 @@ namespace API.GroupsApi
             var response = serializer.DeserializeFromString(responseString);
             return response;
         }
+
+        public GroupsInfoResponseModel GetGroupInfo(string slackApiToken, string channel)
+        {
+            var responseString = "https://slack.com/api/groups.info"
+                .PostUrlEncodedAsync(
+                    new
+                    {
+                        token = slackApiToken,
+                        channel
+                    })
+                .ReceiveString()
+                .Result;
+
+            var serializer = new JsonSerializer<GroupsInfoResponseModel>();
+            var response = serializer.DeserializeFromString(responseString);
+            return response;
+        }
     }
 }

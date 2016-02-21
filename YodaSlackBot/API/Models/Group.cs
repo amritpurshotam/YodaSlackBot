@@ -15,7 +15,7 @@ namespace API.GroupsApi
         public string [] members { get; set; }
         public Topic topic { get; set; }
         public Purpose purpose { get; set; }
-        public string last_read { get; set; }
+        public double last_read { get; set; }
         public int unread_count { get; set; }
         public int unread_count_display { get; set; }
         public Message latest { get; set; }
@@ -23,6 +23,11 @@ namespace API.GroupsApi
         public DateTime CreatedDateTime
         {
             get { return created.ToLocalDateTime(); }
+        }
+
+        public DateTime LastReadDateTime
+        {
+            get { return last_read.ToLocalDateTime(); }
         }
     }
 }
