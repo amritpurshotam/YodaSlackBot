@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Configuration;
 using System.Text;
-using System.Threading.Tasks;
+using API.ChatApi;
 using MargieBot.Models;
 using MargieBot.Responders;
 
@@ -10,6 +8,13 @@ namespace YodaSlackBot.Responders
 {
     public class HelloResponder : IResponder
     {
+        private readonly IChatApi chatApi;
+
+        public HelloResponder(IChatApi chatApi)
+        {
+            this.chatApi = chatApi;
+        }
+
         public bool CanRespond(ResponseContext context)
         {
             return context.Message.MentionsBot
@@ -22,6 +27,9 @@ namespace YodaSlackBot.Responders
             var builder = new StringBuilder();
             builder.Append("Hello ");
             builder.Append(context.Message.User.FormattedUserID);
+
+            chatApi.PostMessage(ConfigurationManager.AppSettings["SlackBotApiToken"], context.Message.User.ID, "hello dm");
+
             return new BotMessage { Text = builder.ToString() };
         }
     }

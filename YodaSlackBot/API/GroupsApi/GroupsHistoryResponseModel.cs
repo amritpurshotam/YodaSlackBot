@@ -1,5 +1,6 @@
 ﻿using System;
 using API.Extensions;
+using API.Models;
 
 namespace API.GroupsApi
 {
